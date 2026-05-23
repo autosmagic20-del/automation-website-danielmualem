@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>יהודית כהן | AI · אוטומציה · מערכות לעסקים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0e0d;
+    --bg2: #171614;
+    --bg3: #1e1c1a;
+    --wood: #b08060;
+    --wood-light: #c9976f;
+    --wood-dim: #6b4e37;
+    --text: #e8e3db;
+    --text-muted: #8c8479;
+    --text-dim: #5a5450;
+    --border: rgba(176, 128, 96, 0.15);
+    --border-hover: rgba(176, 128, 96, 0.35);
+    --card-bg: #17150f;
+    --accent: #b08060;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    direction: rtl;
+    text-align: right;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; right: 0; left: 0;
+    z-index: 100;
+    padding: 1.25rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15,14,13,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--wood);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--wood); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 10vw 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--wood-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 800px;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title span {
+    color: var(--wood);
+  }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--wood);
+    color: #0f0e0d;
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--wood-light); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: var(--text);
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 0.5px solid var(--border-hover);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--wood); color: var(--wood); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 0.5px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--wood);
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+  }
+
+  .hero-bg-line {
+    position: absolute;
+    left: 55%;
+    top: 0; bottom: 0;
+    width: 0.5px;
+    background: linear-gradient(to bottom, transparent, var(--border), transparent);
+    pointer-events: none;
+  }
+
+  /* SECTIONS */
+  section { padding: 7rem 10vw; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--wood-dim);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    max-width: 600px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* SERVICES */
+  #services { background: var(--bg2); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+  }
+  .service-card {
+    background: var(--bg2);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    position: relative;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 3px;
+    height: 0;
+    background: var(--wood);
+    transition: height 0.3s ease;
+  }
+  .service-card:hover { background: var(--bg3); }
+  .service-card:hover::before { height: 100%; }
+  .service-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .service-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+  }
+  .service-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .service-tools {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tool-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border: 0.5px solid var(--border-hover);
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--bg); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+  .project-card {
+    background: var(--bg);
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+  }
+  .project-card:hover { background: var(--bg2); }
+  .project-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--border-hover);
+    margin-bottom: 1rem;
+    letter-spacing: 0.15em;
+  }
+  .project-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .project-client {
+    font-size: 12px;
+    color: var(--wood-dim);
+    margin-bottom: 1rem;
+    font-family: 'Space Mono', monospace;
+  }
+  .project-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .project-results {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .result-item {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .result-item::before {
+    content: '→';
+    color: var(--wood);
+    font-family: monospace;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .project-stack {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  /* PROCESS */
+  #process { background: var(--bg2); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    position: relative;
+  }
+  .process-step {
+    padding: 2rem 1.5rem;
+    border-right: 0.5px solid var(--border);
+    position: relative;
+  }
+  .process-step:last-child { border-right: none; }
+  .step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--border);
+    display: block;
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.25s;
+  }
+  .process-step:hover .step-num { color: var(--wood-dim); }
+  .step-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .step-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--bg); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-info { }
+  .contact-headline {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .contact-headline em {
+    color: var(--wood);
+    font-style: normal;
+  }
+  .contact-desc {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    padding: 1rem 1.25rem;
+    border: 0.5px solid var(--border);
+    color: var(--text-muted);
+    font-size: 14px;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--wood);
+    color: var(--text);
+    background: var(--bg2);
+  }
+  .contact-link-icon {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .contact-form-side { }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    color: var(--text);
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    padding: 0.85rem 1.1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    direction: rtl;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--text-dim); }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--wood); }
+  .form-group textarea { height: 130px; resize: none; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 10vw;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-text {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: 'Space Mono', monospace;
+  }
+  .footer-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--wood-dim);
+    text-decoration: none;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag  { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-title { animation: fadeUp 0.6s ease 0.2s both; }
+  .hero-sub  { animation: fadeUp 0.6s ease 0.3s both; }
+  .hero-ctas { animation: fadeUp 0.6s ease 0.4s both; }
+  .hero-stats { animation: fadeUp 0.6s ease 0.5s both; }
+
+  @media (max-width: 768px) {
+    section { padding: 4rem 6vw; }
+    #hero { padding: 7rem 6vw 4rem; }
+    nav { padding: 1rem 5vw; }
+    .nav-links { gap: 1rem; }
+    .hero-stats { gap: 2rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-step { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .process-step:last-child { border-bottom: none; }
+  }
+  @media (max-width: 480px) {
+    .nav-links { display: none; }
+    .process-steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">YK.STUDIO</a>
+  <ul class="nav-links">
+    <li><a href="#services">שירותים</a></li>
+    <li><a href="#projects">פרויקטים</a></li>
+    <li><a href="#process">תהליך</a></li>
+    <li><a href="#contact">יצירת קשר</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-line"></div>
+  <p class="hero-tag">AI · אוטומציה · מערכות עסקיות</p>
+  <h1 class="hero-title">פתרונות <span>חכמים</span><br>לעסקים שרוצים<br>לצמוח</h1>
+  <p class="hero-sub">בניית מערכות אוטומציה, AI ואתרים מודרניים — שחוסכים שעות של עבודה ידנית ומשחררים אתכם להתמקד בעיקר.</p>
+  <div class="hero-ctas">
+    <a href="https://wa.me/972552422617" class="btn-primary">💬 שלחו הודעה</a>
+    <a href="#projects" class="btn-outline">ראו פרויקטים</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">No-Code / Low-Code</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">4+</span>
+      <span class="stat-label">תחומי התמחות</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">∞</span>
+      <span class="stat-label">שעות שחסכנו ללקוחות</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">AI</span>
+      <span class="stat-label">מבוסס בינה מלאכותית</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">מה אני מציעה</p>
+  <h2 class="section-title">שירותים שמניעים את העסק קדימה</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">⚡</span>
+      <h3 class="service-name">אוטומציות עסקיות</h3>
+      <p class="service-desc">הפיכת תהליכים ידניים לאוטומטיים — ממיילים ועד לידים. חיסכון של שעות עבודה בכל שבוע, ללא תלות בפיתוח.</p>
+      <div class="service-tools">
+        <span class="tool-tag">Make</span>
+        <span class="tool-tag">Zapier</span>
+        <span class="tool-tag">n8n</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🗂️</span>
+      <h3 class="service-name">מערכות ניהול (CRM)</h3>
+      <p class="service-desc">ניהול לקוחות, לידים, פרויקטים ותשלומים ממקום אחד — מסודר, ברור ואוטומטי. סיום לבלגן בגיליונות.</p>
+      <div class="service-tools">
+        <span class="tool-tag">Airtable</span>
+        <span class="tool-tag">Origami</span>
+        <span class="tool-tag">Notion</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🤖</span>
+      <h3 class="service-name">AI לעסקים</h3>
+      <p class="service-desc">שילוב בינה מלאכותית בתהליכי העסק — בוטים חכמים, מענה אוטומטי, ניתוח מסמכים וחילוץ מידע בצורה חכמה.</p>
+      <div class="service-tools">
+        <span class="tool-tag">OpenAI</span>
+        <span class="tool-tag">Claude</span>
+        <span class="tool-tag">OCR / AI</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌐</span>
+      <h3 class="service-name">אתרים ודפי נחיתה</h3>
+      <p class="service-desc">בניית נוכחות דיגיטלית מקצועית — אתרים נקיים, מהירים וממוקדי המרה. מהתכנון ועד העלאה לאוויר.</p>
+      <div class="service-tools">
+        <span class="tool-tag">HTML/CSS</span>
+        <span class="tool-tag">WordPress</span>
+        <span class="tool-tag">GitHub Pages</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">עבודות נבחרות</p>
+  <h2 class="section-title">פרויקטים שדיברו בעד עצמם</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <p class="project-number">01 —</p>
+      <h3 class="project-name">אוטומציה למענה למיילים</h3>
+      <p class="project-client">עסק UX/UI</p>
+      <p class="project-desc">בעלת העסק בילתה שעות רבות ביום בכתיבת תגובות ידניות. בנינו מערכת אוטומטית שניתחת כל מייל, מייצרת תגובה עם AI ומתעדת הכל.</p>
+      <div class="project-results">
+        <span class="result-item">חיסכון שעות עבודה יומיות</span>
+        <span class="result-item">מענה מיידי ללא התערבות ידנית</span>
+        <span class="result-item">תיעוד מלא ב-Airtable</span>
+      </div>
+      <div class="project-stack">
+        <span class="tool-tag">Make</span>
+        <span class="tool-tag">OpenAI</span>
+        <span class="tool-tag">Airtable</span>
+        <span class="tool-tag">Gmail</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <p class="project-number">02 —</p>
+      <h3 class="project-name">מערכת CRM מלאה</h3>
+      <p class="project-client">סוכנות אוטומציה</p>
+      <p class="project-desc">ניהול מורכב של פרויקטים, לידים ופגישות ללא מערכת מרכזית. בנינו CRM שלם עם תזכורות, מעקב תשלומים וחתימות דיגיטליות.</p>
+      <div class="project-results">
+        <span class="result-item">ניהול מרכזי — לקוחות, לידים, פרויקטים</span>
+        <span class="result-item">תזכורות אוטומטיות לפגישות</span>
+        <span class="result-item">סגירת לידים מהירה יותר</span>
+      </div>
+      <div class="project-stack">
+        <span class="tool-tag">Origami</span>
+        <span class="tool-tag">Make</span>
+        <span class="tool-tag">Google Workspace</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <p class="project-number">03 —</p>
+      <h3 class="project-name">עיבוד חשבוניות אוטומטי</h3>
+      <p class="project-client">חברה עם מאות חשבוניות/חודש</p>
+      <p class="project-desc">עיבוד ידני של מאות חשבוניות חודשיות — סריקה, סיווג, שמירה. החלפנו את כל זה במערכת AI שעושה הכל לבד.</p>
+      <div class="project-results">
+        <span class="result-item">חילוץ נתונים עם OCR ו-AI</span>
+        <span class="result-item">ארכיון אוטומטי ב-Google Drive</span>
+        <span class="result-item">דוחות שמתעדכנים בזמן אמת</span>
+      </div>
+      <div class="project-stack">
+        <span class="tool-tag">Make</span>
+        <span class="tool-tag">OCR</span>
+        <span class="tool-tag">Airtable</span>
+        <span class="tool-tag">Google Drive</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <p class="project-number">04 —</p>
+      <h3 class="project-name">ניהול לקוחות ותורים</h3>
+      <p class="project-client">עסק קוסמטיקה</p>
+      <p class="project-desc">עסק שעבד ללא מערכת — בלבול בתורים, תשלומים שמתעכבים ונתונים שאובדים. הכנסנו סדר מוחלט עם Airtable מותאם אישית.</p>
+      <div class="project-results">
+        <span class="result-item">מעבר ממערכת ידנית למסודרת לחלוטין</span>
+        <span class="result-item">גבייה מהירה ומסודרת</span>
+        <span class="result-item">שליטה מלאה בנתונים בזמן אמת</span>
+      </div>
+      <div class="project-stack">
+        <span class="tool-tag">Airtable</span>
+        <span class="tool-tag">Google Workspace</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <p class="section-label">איך עובדים</p>
+  <h2 class="section-title">תהליך עבודה פשוט וברור</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <span class="step-num">01</span>
+      <h3 class="step-title">אפיון</h3>
+      <p class="step-desc">מבינים לעומק את האתגר העסקי — מה כואב, מה לוקח הכי הרבה זמן, ומה המטרה.</p>
+    </div>
+    <div class="process-step">
+      <span class="step-num">02</span>
+      <h3 class="step-title">בנייה</h3>
+      <p class="step-desc">בונים את המערכת שלב אחר שלב — עם עדכונים שוטפים ושקיפות מלאה לאורך הדרך.</p>
+    </div>
+    <div class="process-step">
+      <span class="step-num">03</span>
+      <h3 class="step-title">שיפורים</h3>
+      <p class="step-desc">מריצים, בוחנים, ומשפרים בהתאם לפידבק — עד שהכל עובד בדיוק כמו שצריך.</p>
+    </div>
+    <div class="process-step">
+      <span class="step-num">04</span>
+      <h3 class="step-title">מסירה</h3>
+      <p class="step-desc">מסירה מסודרת עם הדרכה, תיעוד, ותמיכה — כדי שתוכלו להמשיך בביטחון.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p class="section-label">יצירת קשר</p>
+      <h2 class="contact-headline">בואו נבנה<br>משהו <em>חכם</em><br>יחד</h2>
+      <p class="contact-desc">מחפשים לייעל תהליכים ולהפוך עבודה ידנית לאוטומטית? אשמח לשמוע על הצרכים שלכם ולחשוב יחד על הפתרון הנכון.</p>
+      <div class="contact-links">
+        <a href="https://wa.me/972552422617" class="contact-link">
+          <span class="contact-link-icon">💬</span>
+          <span>WhatsApp · 055-242-2617</span>
+        </a>
+        <a href="mailto:autosmagic20@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          <span>autosmagic20@gmail.com</span>
+        </a>
+        <a href="tel:0552422617" class="contact-link">
+          <span class="contact-link-icon">📱</span>
+          <span>055-242-2617</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-side">
+      <div class="form-group">
+        <input type="text" placeholder="שם מלא" />
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="כתובת מייל" />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="נושא" />
+      </div>
+      <div class="form-group">
+        <textarea placeholder="ספרו לי על הצרכים שלכם..."></textarea>
+      </div>
+      <a href="https://wa.me/972552422617" class="btn-primary" style="display:block;text-align:center;">שליחה דרך WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#hero" class="footer-logo">YK.STUDIO</a>
+  <span class="footer-text">© 2025 יהודית כהן · AI · אוטומציה · מערכות לעסקים</span>
+  <span class="footer-text">מודיעין עילית</span>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
