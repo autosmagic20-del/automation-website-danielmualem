@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AutoChoice | מערכות CRM ואוטומציה עסקית</title>
+<meta name="description" content="AutoChoice מתמחה בהגדרה והטמעה של מערכות CRM ותהליכי אוטומציה עסקית — פתרונות מותאמים אישית לעסקים."/>
+<meta name="keywords" content="CRM, אוטומציה עסקית, בינה מלאכותית, ניהול לידים, AutoChoice"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="AutoChoice | מערכות CRM ואוטומציה עסקית"/>
+<meta property="og:description" content="AutoChoice מתמחה בהגדרה והטמעה של מערכות CRM ותהליכי אוטומציה עסקית."/>
+<meta property="og:type" content="website"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"AutoChoice","description":"מערכות CRM ואוטומציה עסקית","email":"moulemdaniel@gmail.com","telephone":"0587113840","areaServed":"Israel","availableLanguage":"Hebrew"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#03060f;--bg2:#060c1a;--surface:#0a1225;--surface2:#0d1830;
+  --blue:#0ea5e9;--blue2:#38bdf8;--blue-dim:#0369a1;
+  --glow:rgba(14,165,233,0.18);--glow2:rgba(14,165,233,0.06);
+  --text:#f0f6ff;--muted:#6b8aaa;
+  --border:rgba(14,165,233,0.12);--border2:rgba(14,165,233,0.25);
+  --mono:'JetBrains Mono',monospace;--sans:'Heebo',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--glow2) 1px,transparent 1px),linear-gradient(90deg,var(--glow2) 1px,transparent 1px);background-size:72px 72px;pointer-events:none;z-index:0}
+
+nav{position:fixed;top:0;inset-inline:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 6%;background:rgba(3,6,15,0.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--mono);font-size:1.15rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:.05em}
+.logo span{color:var(--blue)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--blue2)}
+.nav-cta{background:transparent;border:1px solid var(--blue-dim);color:var(--blue2)!important;padding:.5rem 1.4rem;border-radius:6px;transition:all .2s!important}
+.nav-cta:hover{background:var(--glow)!important;border-color:var(--blue)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:9rem 6% 6rem;overflow:hidden;z-index:1}
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(14,165,233,.15),transparent 70%);top:-80px;right:-60px;animation:drift 12s ease-in-out infinite}
+.orb2{width:350px;height:350px;background:radial-gradient(circle,rgba(56,189,248,.08),transparent 70%);bottom:-40px;left:-40px;animation:drift 16s ease-in-out infinite reverse}
+@keyframes drift{0%,100%{transform:translate(0,0)}33%{transform:translate(-20px,25px)}66%{transform:translate(15px,-15px)}}
+.scan-line{position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);animation:scan 6s linear infinite;opacity:.35}
+@keyframes scan{0%{top:-2px}100%{top:100%}}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;background:rgba(14,165,233,.07);border:1px solid var(--border2);color:var(--blue2);font-family:var(--mono);font-size:.72rem;padding:.35rem 1rem;border-radius:50px;letter-spacing:.1em;margin-bottom:2rem;animation:fadeUp .7s ease both}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-.02em;animation:fadeUp .8s ease .1s both}
+.grad{background:linear-gradient(135deg,var(--blue2) 0%,#7dd3fc 50%,var(--blue) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(.95rem,1.6vw,1.1rem);color:var(--muted);max-width:640px;margin:0 auto 1.5rem;font-weight:300;animation:fadeUp .9s ease .2s both}
+.hero-intro{font-size:clamp(.88rem,1.3vw,.98rem);color:var(--muted);max-width:640px;margin:0 auto 3rem;line-height:1.85;animation:fadeUp 1s ease .25s both;border-top:1px solid var(--border);padding-top:1.5rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s ease .3s both}
+.btn-main{background:linear-gradient(135deg,#0284c7,var(--blue));color:#fff;padding:.9rem 2.4rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(14,165,233,.3);transition:transform .2s,box-shadow .3s;font-family:var(--sans)}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(14,165,233,.45)}
+.btn-ghost{background:transparent;color:var(--text);padding:.9rem 2.4rem;border-radius:8px;font-weight:500;font-size:.95rem;text-decoration:none;border:1px solid var(--border2);transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue2)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+section{position:relative;z-index:1}
+.container{max-width:1160px;margin:0 auto;padding:0 6%}
+.sec-tag{font-family:var(--mono);font-size:.7rem;color:var(--blue);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;line-height:1.15;letter-spacing:-.01em}
+.sec-desc{color:var(--muted);font-size:1rem;max-width:540px;margin-top:.8rem}
+
+#services{padding:7rem 0;background:var(--bg2)}
+.services-head{text-align:center;margin-bottom:4rem}
+.services-head .sec-desc{margin:0 auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2.2rem 1.8rem;position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s}
+.card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(14,165,233,.07),transparent 60%);opacity:0;transition:opacity .35s}
+.card:hover{transform:translateY(-7px);border-color:var(--border2);box-shadow:0 24px 60px rgba(14,165,233,.1)}
+.card:hover::before{opacity:1}
+.card-top{width:44px;height:44px;border-radius:10px;background:rgba(14,165,233,.1);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.3rem}
+.card h3{font-size:1.1rem;font-weight:700;margin-bottom:.65rem}
+.card p{color:var(--muted);font-size:.9rem;line-height:1.75}
+
+#process{padding:7rem 0}
+.steps{display:flex;flex-direction:column;gap:2rem;max-width:680px;margin-top:3rem}
+.step{display:flex;gap:1.3rem;align-items:flex-start}
+.step-num{flex-shrink:0;width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,#0284c7,var(--blue));display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:.85rem;color:#fff}
+.step h4{font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.step p{color:var(--muted);font-size:.9rem}
+
+#why{padding:7rem 0;background:var(--bg2)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;margin-top:3.5rem}
+.why-item{display:flex;gap:1rem;align-items:flex-start}
+.why-icon{flex-shrink:0;width:40px;height:40px;border-radius:9px;background:rgba(14,165,233,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.why-item h4{font-size:.95rem;font-weight:700;margin-bottom:.25rem}
+.why-item p{color:var(--muted);font-size:.88rem}
+
+#contact{padding:7rem 0}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start}
+.cdetail{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
+.cicon{width:38px;height:38px;border-radius:8px;background:rgba(14,165,233,.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.ctext small{display:block;color:var(--muted);font-size:.72rem;margin-bottom:.1rem}
+.ctext a{color:var(--text);font-weight:600;font-size:.9rem;text-decoration:none}
+.ctext a:hover{color:var(--blue2)}
+.form-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem}
+.form-box h3{font-size:1.1rem;font-weight:700;margin-bottom:1.8rem}
+.fg{margin-bottom:1.1rem}
+.fg label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:.45rem;letter-spacing:.04em}
+.fg input,.fg textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;color:var(--text);font-family:var(--sans);font-size:.9rem;outline:none;resize:vertical;transition:border-color .2s,box-shadow .2s}
+.fg input:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(14,165,233,.1)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{width:100%;background:linear-gradient(135deg,#0284c7,var(--blue));color:#fff;border:none;padding:.95rem;border-radius:8px;font-size:.95rem;font-weight:700;cursor:pointer;font-family:var(--sans);margin-top:.4rem;transition:transform .2s,box-shadow .3s}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(14,165,233,.35)}
+#success{display:none;text-align:center;padding:2rem;color:#7dd3fc;font-weight:600}
+
+.page-section{padding:8rem 0 6rem;min-height:80vh}
+.page-section h1{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;margin-bottom:2rem}
+.page-section h2{font-size:1.15rem;font-weight:700;margin:2rem 0 .6rem;color:var(--blue2)}
+.page-section p,.page-section li{color:var(--muted);font-size:.95rem;line-height:1.85;margin-bottom:.5rem}
+.page-section ul{padding-right:1.5rem;margin-bottom:1rem}
+.page-section a{color:var(--blue2);text-decoration:none}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 6%;text-align:center}
+footer p{color:var(--muted);font-size:.82rem;margin-bottom:.5rem}
+footer a{color:var(--muted);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--blue2)}
+.footer-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.2rem;list-style:none}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}.contact-wrap{grid-template-columns:1fr;gap:3rem}.form-row{grid-template-columns:1fr}}
+@media(max-width:560px){.form-box{padding:1.5rem}h1{font-size:2rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="logo" onclick="showPage('main')">Auto<span>Choice</span></a>
+  <ul class="nav-links">
+    <li><a href="#services" onclick="showPage('main')">שירותים</a></li>
+    <li><a href="#process" onclick="showPage('main')">תהליך</a></li>
+    <li><a href="#why" onclick="showPage('main')">למה אנחנו</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="showPage('main')">צור קשר</a></li>
+  </ul>
+  <button class="hamburger" aria-label="תפריט"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MAIN -->
+<div id="page-main">
+
+<section class="hero" id="home">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="scan-line"></div>
+  <div>
+    <div class="hero-tag">CRM · AUTOMATION · AI</div>
+    <h1>מערכות CRM ואוטומציה עסקית —<br/><span class="grad">מהאפיון ועד ליישום</span></h1>
+    <p class="hero-sub">AutoChoice מתמחה בהגדרה והטמעה של מערכות CRM ותהליכי אוטומציה עסקית — פתרונות מותאמים אישית שמייעלים את ניהול הלקוחות, מייצרים תהליכי עבודה עקביים ומאפשרים לעסק לצמוח בצורה מבוקרת.</p>
+    <p class="hero-intro">ניהול לקוחות, מעקב אחר לידים ותיאום תהליכים פנימיים הם עמוד השדרה של כל עסק פעיל. כשהם מנוהלים ידנית — נוצרות טעויות, עיכובים והזדמנויות שנפספסות. AutoChoice בונה את התשתית שמונעת את זה.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-main">צור קשר ←</a>
+      <a href="#services" class="btn-ghost">השירותים שלנו</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="services-head reveal">
+      <p class="sec-tag">// שירותים</p>
+      <h2>מה אנחנו עושים</h2>
+      <p class="sec-desc">פתרונות מותאמים אישית לתהליכי העבודה של העסק שלך</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-top">📊</div>
+        <h3>מערכות CRM</h3>
+        <p>הגדרה, התאמה והטמעה של מערכת CRM המותאמת לתהליכי העבודה הספציפיים של העסק — ניהול לידים, מעקב אחר לקוחות וניהול צינור המכירות בצורה מסודרת ועקבית.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-top">⚙️</div>
+        <h3>אוטומציה עסקית</h3>
+        <p>זיהוי התהליכים החוזרים בעסק והפיכתם לאוטומטיים — חיבור בין מערכות, ניהול משימות ותזמון פעולות — כך שהעבודה הידנית מצטמצמת והעקביות התפעולית עולה.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-top">🧠</div>
+        <h3>בינה מלאכותית</h3>
+        <p>שילוב כלי AI בתוך תהליכי העבודה הקיימים — ניתוח נתונים, אוטומציה חכמה ויצירת תוכן — מוטמעים ישירות לתוך המערכות שכבר בשימוש.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <p class="sec-tag reveal">// תהליך</p>
+    <h2 class="reveal">איך עובדים איתנו</h2>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01</div><div><h4>שיחת היכרות</h4><p>הכרת העסק, התהליכים והצרכים</p></div></div>
+      <div class="step reveal"><div class="step-num">02</div><div><h4>אפיון ותכנון</h4><p>בניית מפת דרכים ברורה לפני כל יישום</p></div></div>
+      <div class="step reveal"><div class="step-num">03</div><div><h4>בנייה והטמעה</h4><p>הגדרה, חיבור ובדיקה של המערכת</p></div></div>
+      <div class="step reveal"><div class="step-num">04</div><div><h4>מסירה וליווי</h4><p>העברת המערכת לידי הלקוח עם ליווי שוטף</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <p class="sec-tag reveal">// למה אנחנו</p>
+    <h2 class="reveal">יישום מקצועי. תוצאות מדידות.</h2>
+    <div class="why-grid">
+      <div class="why-item reveal"><div class="why-icon">🎯</div><div><h4>התאמה מלאה לעסק</h4><p>כל פתרון נבנה לפי התהליכים הקיימים, לא לפי תבנית קבועה מראש.</p></div></div>
+      <div class="why-item reveal"><div class="why-icon">🔍</div><div><h4>ידע טכני ועסקי</h4><p>הבנה מעמיקה הן של הכלים והן של הצרכים העסקיים שמאחוריהם.</p></div></div>
+      <div class="why-item reveal"><div class="why-icon">⚡</div><div><h4>יישום ולא ייעוץ</h4><p>מוסרים מערכת עובדת, לא המלצות.</p></div></div>
+      <div class="why-item reveal"><div class="why-icon">🤝</div><div><h4>ליווי לאחר ההשקה</h4><p>מוודאים שהמערכת עובדת כנדרש ומבצעים התאמות לפי הצורך.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div>
+        <p class="sec-tag reveal">// צור קשר</p>
+        <h2 class="reveal">מעוניין לשמוע איך זה רלוונטי לעסק שלך?</h2>
+        <p class="sec-desc reveal" style="margin-bottom:2.5rem">השאר פרטים ונחזור אליך לשיחה ראשונית ללא התחייבות.</p>
+        <div class="cdetail reveal">
+          <div class="cicon">📧</div>
+          <div class="ctext"><small>אימייל</small><a href="mailto:moulemdaniel@gmail.com">moulemdaniel@gmail.com</a></div>
+        </div>
+        <div class="cdetail reveal">
+          <div class="cicon">📱</div>
+          <div class="ctext"><small>טלפון</small><a href="tel:0587113840">058-711-3840</a></div>
+        </div>
+      </div>
+      <div class="form-box reveal">
+        <h3>השאר פרטים</h3>
+        <form id="lead-form" action="https://formspree.io/f/mwvzqnrk" method="POST">
+          <input type="hidden" name="_subject" value="ליד חדש מהאתר — AutoChoice"/>
+          <div class="form-row">
+            <div class="fg"><label>שם מלא *</label><input type="text" name="name" placeholder="ישראל ישראלי" required/></div>
+            <div class="fg"><label>טלפון *</label><input type="tel" name="phone" placeholder="050-0000000" required/></div>
+          </div>
+          <div class="fg"><label>אימייל</label><input type="email" name="email" placeholder="name@email.com"/></div>
+          <div class="fg"><label>במה ניתן לעזור?</label><textarea name="message" rows="4" placeholder="ספר לנו על העסק והאתגר שלך..."></textarea></div>
+          <button type="submit" class="btn-submit">שלח ←</button>
+        </form>
+        <div id="success">✅ תודה! קיבלנו את פנייתך ונחזור אליך בהקדם.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ACCESSIBILITY -->
+<div id="page-accessibility" style="display:none">
+<section class="page-section">
+  <div class="container">
+    <p class="sec-tag">// נגישות</p>
+    <h1>הצהרת נגישות</h1>
+    <p>AutoChoice פועלת לאפשר לכלל האוכלוסייה לעשות שימוש בשירותיה ובאתר האינטרנט שלה, לרבות אנשים עם מוגבלות.</p>
+    <h2>רמת הנגישות</h2>
+    <p>האתר שואף לעמוד בדרישות תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013, ובהנחיות WCAG 2.1 ברמה AA.</p>
+    <h2>מה בוצע באתר</h2>
+    <ul>
+      <li>שימוש בתגיות HTML סמנטיות לניווט קל עם קוראי מסך</li>
+      <li>ניגודיות צבעים מתאימה לקריאות מרבית</li>
+      <li>תמיכה בניווט מקלדת</li>
+      <li>גודל גופן ניתן להגדלה</li>
+    </ul>
+    <h2>פניות בנושא נגישות</h2>
+    <p>דניאל מועלם — <a href="mailto:moulemdaniel@gmail.com">moulemdaniel@gmail.com</a> | <a href="tel:0587113840">058-711-3840</a></p>
+    <h2>תאריך עדכון</h2>
+    <p>הצהרה זו עודכנה לאחרונה ביוני 2025.</p>
+    <br/>
+    <a href="#home" onclick="showPage('main')" class="btn-main" style="display:inline-block;padding:.8rem 2rem">חזרה לדף הבית ←</a>
+  </div>
+</section>
+</div>
+
+<!-- PRIVACY -->
+<div id="page-privacy" style="display:none">
+<section class="page-section">
+  <div class="container">
+    <p class="sec-tag">// פרטיות</p>
+    <h1>מדיניות פרטיות</h1>
+    <p>מדיניות פרטיות זו מתארת כיצד AutoChoice אוספת, משתמשת ומגנה על המידע האישי שלך.</p>
+    <h2>איזה מידע נאסף</h2>
+    <ul>
+      <li>שם מלא</li>
+      <li>מספר טלפון</li>
+      <li>כתובת אימייל</li>
+      <li>תיאור הפנייה</li>
+    </ul>
+    <h2>כיצד המידע משמש</h2>
+    <p>המידע משמש אך ורק ליצירת קשר חוזרת בעקבות פנייתך. המידע אינו מועבר לצדדים שלישיים ואינו משמש לצרכי שיווק ללא הסכמה מפורשת.</p>
+    <h2>אחסון המידע</h2>
+    <p>המידע מועבר ומאוחסן באמצעות שירות Formspree בהתאם למדיניות הפרטיות שלו.</p>
+    <h2>זכויותיך</h2>
+    <ul>
+      <li>זכות לעיין במידע שנאסף עליך</li>
+      <li>זכות לבקש תיקון או מחיקת המידע</li>
+      <li>זכות להתנגד לשימוש במידע</li>
+    </ul>
+    <h2>יצירת קשר</h2>
+    <p>דניאל מועלם — <a href="mailto:moulemdaniel@gmail.com">moulemdaniel@gmail.com</a> | <a href="tel:0587113840">058-711-3840</a></p>
+    <h2>תאריך עדכון</h2>
+    <p>מדיניות זו עודכנה לאחרונה ביוני 2025.</p>
+    <br/>
+    <a href="#home" onclick="showPage('main')" class="btn-main" style="display:inline-block;padding:.8rem 2rem">חזרה לדף הבית ←</a>
+  </div>
+</section>
+</div>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="#services" onclick="showPage('main')">שירותים</a></li>
+    <li><a href="#process" onclick="showPage('main')">תהליך</a></li>
+    <li><a href="#why" onclick="showPage('main')">למה אנחנו</a></li>
+    <li><a href="#contact" onclick="showPage('main')">צור קשר</a></li>
+    <li><a href="#" onclick="showPage('accessibility');return false;">הצהרת נגישות</a></li>
+    <li><a href="#" onclick="showPage('privacy');return false;">מדיניות פרטיות</a></li>
+  </ul>
+  <p>📧 <a href="mailto:moulemdaniel@gmail.com">moulemdaniel@gmail.com</a> &nbsp;|&nbsp; 📱 <a href="tel:0587113840">058-711-3840</a></p>
+  <p style="margin-top:.8rem">© AutoChoice · כל הזכויות שמורות</p>
+</footer>
+
+<script>
+function showPage(name){
+  document.getElementById('page-main').style.display=name==='main'?'block':'none';
+  document.getElementById('page-accessibility').style.display=name==='accessibility'?'block':'none';
+  document.getElementById('page-privacy').style.display=name==='privacy'?'block':'none';
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(name==='main') setTimeout(initReveal,100);
+}
+
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*90);obs.unobserve(e.target);}
+    });
+  },{threshold:.1});
+  document.querySelectorAll('#page-main .reveal:not(.in)').forEach(el=>obs.observe(el));
+}
+initReveal();
+
+document.getElementById('lead-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=e.target.querySelector('.btn-submit');
+  btn.textContent='שולח...';btn.disabled=true;
+  try{
+    const r=await fetch(e.target.action,{method:'POST',body:new FormData(e.target),headers:{Accept:'application/json'}});
+    if(r.ok){e.target.style.display='none';document.getElementById('success').style.display='block';}
+    else{btn.textContent='שלח ←';btn.disabled=false;alert('שגיאה בשליחה, נסה שוב.');}
+  }catch{btn.textContent='שלח ←';btn.disabled=false;alert('שגיאה בשליחה, נסה שוב.');}
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(href==='#') return;
+    const t=document.querySelector(href);
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
